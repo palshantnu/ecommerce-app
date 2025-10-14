@@ -12,13 +12,18 @@ import {
 import { NavigationContainer } from '@react-navigation/native';
 import AppNavigator from './src/navigation';
 import { AuthProvider } from './src/context/AuthContext';
+import colors from './src/constants/colors';
 
 function App() {
   const isDarkMode = useColorScheme() === 'dark';
 
   return (
     <SafeAreaProvider>
-      <StatusBar barStyle={isDarkMode ? 'light-content' : 'dark-content'} />
+      <StatusBar 
+        barStyle={isDarkMode ? 'light-content' : 'dark-content'}
+        backgroundColor={colors.primary}
+        translucent={false}
+      />
       <AuthProvider>
         <AppContent />
       </AuthProvider>
@@ -32,7 +37,10 @@ function AppContent() {
   return (
     <SafeAreaView
       edges={['top', 'bottom', 'left', 'right']}
-      style={styles.container}
+      style={[
+        styles.container,
+        { paddingTop: safeAreaInsets.top }
+      ]}
     >
       {/* <NavigationContainer> */}
         <AppNavigator />
@@ -44,6 +52,7 @@ function AppContent() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    backgroundColor: colors.background || '#fff'
   },
 });
 

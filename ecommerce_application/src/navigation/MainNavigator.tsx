@@ -7,7 +7,7 @@ import Ionicons from 'react-native-vector-icons/Ionicons';
 import HomeScreen from '../screens/Home/HomeScreen';
 import CartScreen from '../screens/Cart/CartScreen';
 import OrdersScreen from '../screens/Orders/OrdersScreen';
-import ProfileScreen from '../screens/Profile/ProfileScreen';
+import SettingsScreen from '../screens/Settings/SettingsScreen';
 import LoginScreen from '../screens/Auth/LoginScreen';
 import RegisterScreen from '../screens/Auth/RegisterScreen';
 import ForgotPasswordScreen from '../screens/Auth/ForgotPasswordScreen';
@@ -49,8 +49,8 @@ const MainTabs = () => (
           case 'Orders':
             iconName = focused ? 'receipt' : 'receipt-outline';
             break;
-          case 'Profile':
-            iconName = focused ? 'person' : 'person-outline';
+          case 'Settings':
+            iconName = focused ? 'settings' : 'settings-outline';
             break;
         }
 
@@ -61,7 +61,7 @@ const MainTabs = () => (
     <Tab.Screen name="Home" component={HomeScreen} options={{ title: 'Home' }} />
     <Tab.Screen name="Cart" component={CartScreen} options={{ title: 'Cart' }} />
     <Tab.Screen name="Orders" component={OrdersScreen} options={{ title: 'Orders' }} />
-    <Tab.Screen name="Profile" component={ProfileScreen} options={{ title: 'Profile' }} />
+    <Tab.Screen name="Settings" component={SettingsScreen} options={{ title: 'Settings' }} />
   </Tab.Navigator>
 );
 
