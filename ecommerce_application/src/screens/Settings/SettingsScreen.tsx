@@ -12,13 +12,14 @@ import {
 } from 'react-native';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import colors from '../../constants/colors';
+import { useNavigation } from '@react-navigation/native';
 
 const SettingsScreen = () => {
     const [notifications, setNotifications] = useState(true);
     const [darkMode, setDarkMode] = useState(false);
     const [locationAccess, setLocationAccess] = useState(true);
     const [marketingEmails, setMarketingEmails] = useState(false);
-
+    const navigation = useNavigation();
     const handleLogout = () => {
         Alert.alert(
             'Logout',
@@ -96,7 +97,7 @@ const SettingsScreen = () => {
                             <Text style={styles.profileEmail}>john.doe@example.com</Text>
                             <Text style={styles.profilePhone}>+1 234 567 8900</Text>
                         </View>
-                        <TouchableOpacity style={styles.editButton}>
+                        <TouchableOpacity onPress={() => navigation.navigate('ProfileScreen')} style={styles.editButton}>
                             <Ionicons name="create-outline" size={18} color={colors.primary} />
                             <Text style={styles.editButtonText}>Edit</Text>
                         </TouchableOpacity>
@@ -116,7 +117,7 @@ const SettingsScreen = () => {
                             onSwitchChange={setNotifications}
                             showArrow={false}
                         />
-            
+
                     </View>
                 </View>
 

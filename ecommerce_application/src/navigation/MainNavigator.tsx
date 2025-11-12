@@ -11,6 +11,9 @@ import SettingsScreen from '../screens/Settings/SettingsScreen';
 import LoginScreen from '../screens/Auth/LoginScreen';
 import RegisterScreen from '../screens/Auth/RegisterScreen';
 import ForgotPasswordScreen from '../screens/Auth/ForgotPasswordScreen';
+import ProductListScreen from '../screens/Product/ProductListScreen';
+import ProductDetailsScreen from '../screens/Product/ProductDetailsScreen';
+import ProfileScreen from '../screens/Profile/ProfileScreen';
 
 export type RootStackParamList = {
   MainTabs: undefined;
@@ -26,7 +29,7 @@ const MainTabs = () => (
   <Tab.Navigator
     screenOptions={({ route }) => ({
       headerShown: false,
-      tabBarActiveTintColor: '#FF6F61',
+      tabBarActiveTintColor: '#435d13',
       tabBarInactiveTintColor: '#9B9B9B',
       tabBarStyle: {
         height: 60,
@@ -71,6 +74,9 @@ const MainNavigator = () => (
     <Stack.Screen name="Login" component={LoginScreen} />
     <Stack.Screen name="Register" component={RegisterScreen} />
     <Stack.Screen name="ForgotPassword" component={ForgotPasswordScreen} />
+    <Stack.Screen name="ProductList" component={ProductListScreen} />
+    <Stack.Screen name="ProductDetails" component={ProductDetailsScreen} />
+    <Stack.Screen name="ProfileScreen" component={ProfileScreen} />
   </Stack.Navigator>
 );
 

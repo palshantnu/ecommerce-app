@@ -16,6 +16,7 @@ import Banner from '../../components/layout/Banner';
 import CategoryCard from '../../components/layout/CategoryCard';
 import ProductCard from '../../components/product/ProductCard';
 import Ionicons from 'react-native-vector-icons/Ionicons';
+import { useNavigation } from '@react-navigation/native';
 
 const { width } = Dimensions.get('window');
 const categories = [
@@ -118,7 +119,7 @@ const HomeScreen = () => {
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedCategory, setSelectedCategory] = useState<number | null>(3);
   const [fadeAnim] = useState(new Animated.Value(0));
-
+  const navigation = useNavigation();
   React.useEffect(() => {
     Animated.timing(fadeAnim, {
       toValue: 1,
@@ -158,13 +159,14 @@ const HomeScreen = () => {
       fadeAnim={fadeAnim}
       onAddPress={() => handleAddToCart(item.id)}
       onFavoritePress={() => handleFavorite(item.id)}
+      navigation={navigation}
     />
   );
 
   return (
     <View style={styles.container}>
       <Header />
-      
+
       <ScrollView
         style={styles.scrollView}
         showsVerticalScrollIndicator={false}
@@ -189,7 +191,7 @@ const HomeScreen = () => {
 
         <View style={styles.productsHeader}>
           <Text style={styles.sectionTitle}>Top picks for you</Text>
-          <TouchableOpacity>
+          <TouchableOpacity onPress={() => navigation.navigate('ProductList')} >
             <Text style={styles.seeAllText}>See all</Text>
           </TouchableOpacity>
         </View>

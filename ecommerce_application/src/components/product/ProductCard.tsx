@@ -3,7 +3,7 @@ import { View, Text, Image, TouchableOpacity, StyleSheet, Animated } from 'react
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import colors from '../../constants/colors';
 
-const ProductCard = ({ product, fadeAnim, onAddPress, onFavoritePress }) => {
+const ProductCard = ({ product, fadeAnim, onAddPress, onFavoritePress, navigation }) => {
   return (
     <Animated.View
       style={[
@@ -19,32 +19,34 @@ const ProductCard = ({ product, fadeAnim, onAddPress, onFavoritePress }) => {
         }
       ]}
     >
-      <View style={styles.productImageContainer}>
-        <Image source={{ uri: product.imageUri }} style={styles.productImage} />
-        <View style={styles.ratingBadge}>
-          <Ionicons name="star" size={12} color="#FFD700" />
-          <Text style={styles.ratingText}>{product.rating}</Text>
-        </View>
-        <TouchableOpacity style={styles.favoriteButton} onPress={onFavoritePress}>
-          <Ionicons name="heart-outline" size={18} color="#fff" />
-        </TouchableOpacity>
-      </View>
-
-      <View style={styles.productInfo}>
-        <Text style={styles.productName} numberOfLines={2}>{product.name}</Text>
-
-        <View style={styles.deliveryInfo}>
-          <Ionicons name="time-outline" size={14} color="#666" />
-          <Text style={styles.deliveryText}>{product.deliveryTime}</Text>
-        </View>
-
-        <View style={styles.priceContainer}>
-          <Text style={styles.productPrice}>₹{product.price}</Text>
-          <TouchableOpacity style={styles.addButton} onPress={onAddPress}>
-            <Ionicons name="add" size={20} color="#fff" />
+      <TouchableOpacity onPress={() => navigation.navigate('ProductDetails')}>
+        <View style={styles.productImageContainer}>
+          <Image source={{ uri: product.imageUri }} style={styles.productImage} />
+          <View style={styles.ratingBadge}>
+            <Ionicons name="star" size={12} color="#FFD700" />
+            <Text style={styles.ratingText}>{product.rating}</Text>
+          </View>
+          <TouchableOpacity style={styles.favoriteButton} onPress={onFavoritePress}>
+            <Ionicons name="heart-outline" size={18} color="#fff" />
           </TouchableOpacity>
         </View>
-      </View>
+
+        <View style={styles.productInfo}>
+          <Text style={styles.productName} numberOfLines={2}>{product.name}</Text>
+
+          <View style={styles.deliveryInfo}>
+            <Ionicons name="time-outline" size={14} color="#666" />
+            <Text style={styles.deliveryText}>{product.deliveryTime}</Text>
+          </View>
+
+          <View style={styles.priceContainer}>
+            <Text style={styles.productPrice}>₹{product.price}</Text>
+            <TouchableOpacity style={styles.addButton} onPress={onAddPress}>
+              <Ionicons name="add" size={20} color="#fff" />
+            </TouchableOpacity>
+          </View>
+        </View>
+      </TouchableOpacity>
     </Animated.View>
   );
 };

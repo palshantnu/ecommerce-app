@@ -97,6 +97,7 @@ const styles = StyleSheet.create({
   },
   profileButton: {
     padding: 4,
+    backgroundColor: colors.white,
   },
   profileIcon: {
     width: 40,

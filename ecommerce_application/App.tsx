@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import {
   StatusBar,
   StyleSheet,
@@ -13,10 +13,17 @@ import { NavigationContainer } from '@react-navigation/native';
 import AppNavigator from './src/navigation';
 import { AuthProvider } from './src/context/AuthContext';
 import colors from './src/constants/colors';
-
+import { CartProvider } from './src/context/CartContext';
+import SplashScreen from 'react-native-splash-screen';
 function App() {
   const isDarkMode = useColorScheme() === 'dark';
 
+    useEffect(() => {
+      // Hide splash screen after loading
+      setTimeout(() => {
+        SplashScreen.hide();
+      }, 2000); // optional delay for demo
+    }, []);
   return (
     <SafeAreaProvider>
       <StatusBar 
@@ -25,7 +32,9 @@ function App() {
         translucent={false}
       />
       <AuthProvider>
+      <CartProvider>
         <AppContent />
+        </CartProvider>
       </AuthProvider>
     </SafeAreaProvider>
   );
@@ -39,7 +48,7 @@ function AppContent() {
       edges={['top', 'bottom', 'left', 'right']}
       style={[
         styles.container,
-        { paddingTop: safeAreaInsets.top }
+        // { paddingTop: safeAreaInsets.top }
       ]}
     >
       {/* <NavigationContainer> */}
@@ -52,7 +61,7 @@ function AppContent() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: colors.background || '#fff'
+    backgroundColor: colors.primary || '#fff'
   },
 });
 
